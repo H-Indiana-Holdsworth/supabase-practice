@@ -37,6 +37,8 @@ export async function getOldestMovie() {
 
 export async function getMoviesAfter(year) {
   // return movies made after the year passed in
+  const resp = await client.from('movies').select('*').gte('year', `${year}`);
+  return checkError(resp);
 }
 
 export async function getHighestGrossingMovie() {
