@@ -25,6 +25,8 @@ export async function getMovieById(id) {
 
 export async function getMovieByTitle(title) {
   // return the movie with the given title
+  const resp = await client.from('movies').select('*').match({ title }).single();
+  return checkError(resp);
 }
 
 export async function getOldestMovie() {
