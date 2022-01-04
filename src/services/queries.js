@@ -31,6 +31,8 @@ export async function getMovieByTitle(title) {
 
 export async function getOldestMovie() {
   // return the oldest movie (assume the database is not sorted)
+  const resp = await client.from('movies').select('title').eq('year', '1977').single();
+  return checkError(resp);
 }
 
 export async function getMoviesAfter(year) {
